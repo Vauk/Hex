@@ -182,5 +182,14 @@ namespace Hex
 
             return hexPoint;
         }
+
+        public static void setHexStyle(Point p, int terrain)
+        {
+            gameMap[p.X, p.Y].Terrain = terrain;
+        }
+        public void setHexStyle(Point p, bool road)
+        {
+            gameMap[p.X, p.Y].Road = road;
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace Hex
     {
         private Map map = new Map();
         private static GEngine gEngine;
+        private static int currentMapEditOption = 0;
 
         public HexGameWindow()
         {
@@ -43,7 +44,11 @@ namespace Hex
         private void canvas_MouseClick(object sender, MouseEventArgs e)
         {
             Point clickPoint = e.Location;
-            Map.getBoardLocation(clickPoint);
+            Point clickHex = Map.getBoardLocation(clickPoint);
+            if (currentMapEditOption != 0)
+            {
+                Map.setHexStyle(clickHex, currentMapEditOption);
+            }
         }
 
         public void startGraphics(Graphics g)
@@ -57,16 +62,24 @@ namespace Hex
             gEngine.stop();
         }
 
-        private void mapEditPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void canvas_MouseMove(object sender, MouseEventArgs e)
         {
             Point relativePoint = this.PointToClient(Cursor.Position);
             lblMouseCoor.Text = relativePoint.X + "," + relativePoint.Y;
+        }
 
+        private void btnDesert_Click(object sender, EventArgs e)
+        {
+            Cursor c = new Cursor("C:\\Users\\rsakowski\\Documents\\Visual Studio 2015\\Projects\\Hex\\Hex\\Images\\MapEditorDragImages\\Desert.cur");
+            canvas.Cursor = c;
+            currentMapEditOption = (int)Hex.TerrainType.Desert;
+        }
+
+        private void btnPlains_Click(object sender, EventArgs e)
+        {
+            Cursor c = new Cursor("C:\\Users\\rsakowski\\Documents\\Visual Studio 2015\\Projects\\Hex\\Hex\\Images\\MapEditorDragImages\\Plains.cur");
+            canvas.Cursor = c;
+            currentMapEditOption = (int)Hex.TerrainType.Plains;
         }
     }
 }
