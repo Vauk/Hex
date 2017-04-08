@@ -15,6 +15,7 @@ namespace Hex
         private Map map = new Map();
         private static GEngine gEngine;
         private static int currentMapEditOption = 0;
+        private static bool currentMapAddRoad = false;
 
         public HexGameWindow()
         {
@@ -49,6 +50,10 @@ namespace Hex
             {
                 Map.setHexStyle(clickHex, currentMapEditOption);
             }
+            if (currentMapAddRoad)
+            {
+                Map.setHexStyle(clickHex, currentMapAddRoad);
+            }
         }
 
         public void startGraphics(Graphics g)
@@ -80,6 +85,48 @@ namespace Hex
             Cursor c = new Cursor("C:\\Users\\rsakowski\\Documents\\Visual Studio 2015\\Projects\\Hex\\Hex\\Images\\MapEditorDragImages\\Plains.cur");
             canvas.Cursor = c;
             currentMapEditOption = (int)Hex.TerrainType.Plains;
+        }
+
+        private void btnSwamp_Click(object sender, EventArgs e)
+        {
+            Cursor c = new Cursor("C:\\Users\\rsakowski\\Documents\\Visual Studio 2015\\Projects\\Hex\\Hex\\Images\\MapEditorDragImages\\Swamp.cur");
+            canvas.Cursor = c;
+            currentMapEditOption = (int)Hex.TerrainType.Swamp;
+
+        }
+
+        private void btnForest_Click(object sender, EventArgs e)
+        {
+            Cursor c = new Cursor("C:\\Users\\rsakowski\\Documents\\Visual Studio 2015\\Projects\\Hex\\Hex\\Images\\MapEditorDragImages\\Forest.cur");
+            canvas.Cursor = c;
+            currentMapEditOption = (int)Hex.TerrainType.Forest;
+
+        }
+
+        private void btnMountain_Click(object sender, EventArgs e)
+        {
+            Cursor c = new Cursor("C:\\Users\\rsakowski\\Documents\\Visual Studio 2015\\Projects\\Hex\\Hex\\Images\\MapEditorDragImages\\Mountain.cur");
+            canvas.Cursor = c;
+            currentMapEditOption = (int)Hex.TerrainType.Mountain;
+
+        }
+
+        private void btnVolcano_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLava_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRoad_Click(object sender, EventArgs e)
+        {
+            Cursor c = new Cursor("C:\\Users\\rsakowski\\Documents\\Visual Studio 2015\\Projects\\Hex\\Hex\\Images\\MapEditorDragImages\\Road.cur");
+            canvas.Cursor = c;
+            currentMapEditOption = 0;
+            currentMapAddRoad = true;
         }
     }
 }

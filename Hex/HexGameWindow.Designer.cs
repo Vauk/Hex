@@ -98,6 +98,7 @@
             this.btnRoad.TabIndex = 7;
             this.btnRoad.Text = "Road";
             this.btnRoad.UseVisualStyleBackColor = true;
+            this.btnRoad.Click += new System.EventHandler(this.btnRoad_Click);
             // 
             // btnLava
             // 
@@ -107,6 +108,7 @@
             this.btnLava.TabIndex = 6;
             this.btnLava.Text = "Lava";
             this.btnLava.UseVisualStyleBackColor = true;
+            this.btnLava.Click += new System.EventHandler(this.btnLava_Click);
             // 
             // btnVolcano
             // 
@@ -116,6 +118,7 @@
             this.btnVolcano.TabIndex = 5;
             this.btnVolcano.Text = "Volcano";
             this.btnVolcano.UseVisualStyleBackColor = true;
+            this.btnVolcano.Click += new System.EventHandler(this.btnVolcano_Click);
             // 
             // btnMountain
             // 
@@ -125,6 +128,7 @@
             this.btnMountain.TabIndex = 4;
             this.btnMountain.Text = "Mountain";
             this.btnMountain.UseVisualStyleBackColor = true;
+            this.btnMountain.Click += new System.EventHandler(this.btnMountain_Click);
             // 
             // btnForest
             // 
@@ -134,6 +138,7 @@
             this.btnForest.TabIndex = 3;
             this.btnForest.Text = "Forest";
             this.btnForest.UseVisualStyleBackColor = true;
+            this.btnForest.Click += new System.EventHandler(this.btnForest_Click);
             // 
             // btnSwamp
             // 
@@ -143,6 +148,7 @@
             this.btnSwamp.TabIndex = 2;
             this.btnSwamp.Text = "Swamp";
             this.btnSwamp.UseVisualStyleBackColor = true;
+            this.btnSwamp.Click += new System.EventHandler(this.btnSwamp_Click);
             // 
             // btnPlains
             // 

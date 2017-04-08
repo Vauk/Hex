@@ -94,9 +94,10 @@ namespace Hex
                 {
                     Point[] poly = Map.gameMap[i, j].Polygon;
                     int TerrainType = Map.gameMap[i, j].Terrain;
+                    bool hasRoad = Map.gameMap[i, j].Road;
                     Color color = Color.Black;
 
-                    // This needs to be taken care of somewhere else in future
+                    // This needs to be taken care of somewhere else in future with assets
                     switch (TerrainType)
                     {
                         case (int)Hex.TerrainType.Desert:
@@ -118,6 +119,30 @@ namespace Hex
 
                     g.FillPolygon(new SolidBrush(color), poly);
                     g.DrawPolygon(new Pen(Color.Black), poly);
+
+                    // This needs to be taken care of somewhere else in future with assets
+                    if (hasRoad)
+                    {
+                        bool nHasRoad, neHasRoad, seHasRoad, sHasRoad, swHasRoad, nwHasRoad;
+                        //North
+                        if (j - 1 >= 0)
+                            nHasRoad = Map.gameMap[i, j - 1].Road;
+                        //NorthEast
+                        if (i + 1 < boardSize && j - 1 >= 0)
+                            neHasRoad = Map.gameMap[i + 1, j - 1].Road;
+                        //SouthEast
+                        if (i + 1 < boardSize)
+                            seHasRoad = Map.gameMap[i + 1, j].Road;
+                        //South
+                        if (j + 1 < boardSize)
+                            sHasRoad = Map.gameMap[i, j + 1].Road;
+                        //SouthWest
+                        if (i - 1 >= 0)
+                            swHasRoad = Map.gameMap[i - 1, j].Road;
+                        //NorthWest
+                        if (i - 1 >= 0 && j - 1 >= 0)
+                            nwHasRoad = Map.gameMap[i - 1, j - 1].Road;
+                    }
                 }
             }
         }
@@ -187,7 +212,7 @@ namespace Hex
         {
             gameMap[p.X, p.Y].Terrain = terrain;
         }
-        public void setHexStyle(Point p, bool road)
+        public static void setHexStyle(Point p, bool road)
         {
             gameMap[p.X, p.Y].Road = road;
         }
