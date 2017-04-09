@@ -28,7 +28,7 @@ namespace Hex
 
         public void stop()
         {
-            renderThread.Abort();
+            //renderThread.Abort();
         }
 
         public void render()

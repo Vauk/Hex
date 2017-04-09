@@ -51,6 +51,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Units\GameUnit.cs" />
     <Compile Include="Hex.cs" />
     <Compile Include="Program.cs" />
@@ -79,6 +84,10 @@
     <EmbeddedResource Include="HexGameWindow.resx">
       <DependentUpon>HexGameWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -93,14 +102,30 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\MapEditorDragImages\Castle.cur" />
-    <Content Include="Images\MapEditorDragImages\Desert.cur" />
-    <Content Include="Images\MapEditorDragImages\Forest.cur" />
-    <Content Include="Images\MapEditorDragImages\Mountain.cur" />
-    <Content Include="Images\MapEditorDragImages\Plains.cur" />
-    <Content Include="Images\MapEditorDragImages\River.cur" />
-    <Content Include="Images\MapEditorDragImages\Road.cur" />
-    <Content Include="Images\MapEditorDragImages\Swamp.cur" />
+    <Content Include="Images\MapEditorDragImages\Castle.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MapEditorDragImages\Desert.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MapEditorDragImages\Forest.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MapEditorDragImages\Mountain.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MapEditorDragImages\Plains.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MapEditorDragImages\River.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MapEditorDragImages\Road.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MapEditorDragImages\Swamp.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

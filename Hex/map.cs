@@ -123,25 +123,65 @@ namespace Hex
                     // This needs to be taken care of somewhere else in future with assets
                     if (hasRoad)
                     {
-                        bool nHasRoad, neHasRoad, seHasRoad, sHasRoad, swHasRoad, nwHasRoad;
+                        bool nHasRoad = false;
+                        bool neHasRoad = false;
+                        bool seHasRoad = false;
+                        bool sHasRoad = false;
+                        bool swHasRoad = false;
+                        bool nwHasRoad = false;
+
                         //North
                         if (j - 1 >= 0)
                             nHasRoad = Map.gameMap[i, j - 1].Road;
-                        //NorthEast
-                        if (i + 1 < boardSize && j - 1 >= 0)
-                            neHasRoad = Map.gameMap[i + 1, j - 1].Road;
-                        //SouthEast
-                        if (i + 1 < boardSize)
-                            seHasRoad = Map.gameMap[i + 1, j].Road;
                         //South
                         if (j + 1 < boardSize)
                             sHasRoad = Map.gameMap[i, j + 1].Road;
-                        //SouthWest
-                        if (i - 1 >= 0)
-                            swHasRoad = Map.gameMap[i - 1, j].Road;
-                        //NorthWest
-                        if (i - 1 >= 0 && j - 1 >= 0)
-                            nwHasRoad = Map.gameMap[i - 1, j - 1].Road;
+                        if (i % 2 == 0)
+                        {
+                            //NorthEast
+                            if (i + 1 < boardSize && j - 1 >= 0)
+                                neHasRoad = Map.gameMap[i + 1, j - 1].Road;
+                            //SouthEast
+                            if (i + 1 < boardSize)
+                                seHasRoad = Map.gameMap[i + 1, j].Road;
+                            //SouthWest
+                            if (i - 1 >= 0)
+                                swHasRoad = Map.gameMap[i - 1, j].Road;
+                            //NorthWest
+                            if (i - 1 >= 0 && j - 1 >= 0)
+                                nwHasRoad = Map.gameMap[i - 1, j - 1].Road;
+                        }
+                        else
+                        {
+                            //NorthEast
+                            if (i + 1 < boardSize)
+                                neHasRoad = Map.gameMap[i + 1, j].Road;
+                            //SouthEast
+                            if (i + 1 < boardSize && j + 1 < boardSize)
+                                seHasRoad = Map.gameMap[i + 1, j + 1].Road;
+                            //SouthWest
+                            if (i - 1 >= 0 && j + 1 < boardSize)
+                                swHasRoad = Map.gameMap[i - 1, j + 1].Road;
+                            //NorthWest
+                            if (i - 1 >= 0)
+                                nwHasRoad = Map.gameMap[i - 1, j].Road;
+                        }
+                        
+                        if (!nHasRoad && !neHasRoad && !seHasRoad && !sHasRoad && !swHasRoad && !nwHasRoad)
+                            g.DrawLine(new Pen(Color.Brown, 2), Map.gameMap[i,j].HexLeftMidPoint, Map.gameMap[i, j].HexRightMidPoint);
+
+                        if (nHasRoad)
+                            g.DrawLine(new Pen(Color.Brown, 2), Map.gameMap[i, j].hexMidPoint, Map.gameMap[i, j].nMidPoint);
+                        if (neHasRoad)
+                            g.DrawLine(new Pen(Color.Brown, 2), Map.gameMap[i, j].hexMidPoint, Map.gameMap[i, j].neMidPoint);
+                        if (seHasRoad)
+                            g.DrawLine(new Pen(Color.Brown, 2), Map.gameMap[i, j].hexMidPoint, Map.gameMap[i, j].seMidPoint);
+                        if (sHasRoad)
+                            g.DrawLine(new Pen(Color.Brown, 2), Map.gameMap[i, j].hexMidPoint, Map.gameMap[i, j].sMidPoint);
+                        if (swHasRoad)
+                            g.DrawLine(new Pen(Color.Brown, 2), Map.gameMap[i, j].hexMidPoint, Map.gameMap[i, j].swMidPoint);
+                        if (nwHasRoad)
+                            g.DrawLine(new Pen(Color.Brown, 2), Map.gameMap[i, j].hexMidPoint, Map.gameMap[i, j].nwMidPoint);
                     }
                 }
             }
@@ -212,9 +252,10 @@ namespace Hex
         {
             gameMap[p.X, p.Y].Terrain = terrain;
         }
+
         public static void setHexStyle(Point p, bool road)
         {
-            gameMap[p.X, p.Y].Road = road;
+            gameMap[p.X, p.Y].Road = !gameMap[p.X, p.Y].Road;
         }
     }
 }
