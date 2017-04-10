@@ -9,7 +9,7 @@ namespace Hex
 {
     class Map
     {
-        private static int boardSize = 0;               // Number of hexes along length and width
+        public static int boardSize = 0;               // Number of hexes along length and width
         private static int hexSize = 0;                 // hex size in pixels
         private static int hexBorder = 0;
         private static int side = 0;                    // length of one side
@@ -187,7 +187,7 @@ namespace Hex
             }
         }
 
-        public static Point getBoardLocation(Point p)
+        /*public static Point getBoardLocation(Point p)
         {
             Point hexPoint = new Point(-1, -1);
 
@@ -246,6 +246,41 @@ namespace Hex
             hexPoint.Y = y;
 
             return hexPoint;
+        }
+        */
+
+        public static Point getBoardLocation(Point point)
+        {
+            for (int i = 0; i < boardSize; i++)
+            {
+                for (int j = 0; j < boardSize; j++)
+                {
+                    Point[] poly = Map.gameMap[i, j].Polygon;
+
+                    var coef = poly.Skip(1).Select((p, x) =>
+                                                                (point.Y - poly[x].Y) * (p.X - poly[x].X)
+                                                                - (point.X - poly[x].X) * (p.Y - poly[x].Y)).ToList();
+
+                    // point is on the line
+                    if (coef.Any(p => p == 0))
+                        return new Point(i, j);
+
+                    bool isInHex = true;
+
+                    for (int k = 1; k < coef.Count(); k++)
+                    {
+                        if (coef[k] * coef[k - 1] < 0)
+                        {
+                            isInHex = false;
+                            break;
+                        }
+                    }
+
+                    if (isInHex)
+                        return new Point(i, j);
+                }
+            }
+            return new Point(-1, -1);
         }
 
         public static void setHexStyle(Point p, int terrain)

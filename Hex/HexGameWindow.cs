@@ -44,15 +44,19 @@ namespace Hex
 
         private void canvas_MouseClick(object sender, MouseEventArgs e)
         {
-            Point clickPoint = e.Location;
-            Point clickHex = Map.getBoardLocation(clickPoint);
-            if (currentMapEditOption != 0)
+            //Point clickHex = Map.getBoardLocation(e.Location);
+            Point clickHex = Map.getBoardLocation(e.Location);
+
+            if (clickHex.X >= 0 && clickHex.X < Map.boardSize && clickHex.Y >= 0 && clickHex.Y < Map.boardSize)
             {
-                Map.setHexStyle(clickHex, currentMapEditOption);
-            }
-            if (currentMapAddRoad)
-            {
-                Map.setHexStyle(clickHex, currentMapAddRoad);
+                if (currentMapEditOption != 0)
+                {
+                    Map.setHexStyle(clickHex, currentMapEditOption);
+                }
+                if (currentMapAddRoad)
+                {
+                    Map.setHexStyle(clickHex, currentMapAddRoad);
+                }
             }
         }
 
