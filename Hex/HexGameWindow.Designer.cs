@@ -45,6 +45,7 @@
             // 
             // tmrAppTimer
             // 
+            this.tmrAppTimer.Enabled = true;
             this.tmrAppTimer.Tick += new System.EventHandler(this.tmrAppTimer_Tick);
             // 
             // mapEditPanel
@@ -163,7 +164,6 @@
             this.Text = "Hex Game";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HexGameWindow_FormClosing);
             this.Load += new System.EventHandler(this.HexGameWindow_Load);
-            this.Click += new System.EventHandler(this.HexGameWindow_Click);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.HexGameWindow_MouseClick);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.HexGameWindow_MouseMove);
             this.mapEditPanel.ResumeLayout(false);

@@ -110,11 +110,6 @@ namespace Hex
             this.Refresh();
         }
 
-        private void HexGameWindow_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void HexGameWindow_MouseClick(object sender, MouseEventArgs e)
         {
             Point clickHex = Map.getBoardLocation(e.Location);

@@ -50,12 +50,7 @@ namespace Hex
             {
                 for (int j = 0; j < boardSize; j++)
                 {
-                    if (j != 5)
-                        gameMap[i, j] = new Hex(calcHex(i, j), (int)Hex.TerrainType.Desert, false, false);
-                    else
-
-                        gameMap[i, j] = new Hex(calcHex(i, j), (int)Hex.TerrainType.Desert, true, false);
-
+                    gameMap[i, j] = new Hex(calcHex(i, j), (int)Hex.TerrainType.Desert, false, false);
                 }
             }
         }
@@ -198,10 +193,6 @@ namespace Hex
                     var coef = poly.Skip(1).Select((p, x) =>
                                                                 (point.Y - poly[x].Y) * (p.X - poly[x].X)
                                                                 - (point.X - poly[x].X) * (p.Y - poly[x].Y)).ToList();
-
-                    // point is on the line
-                    if (coef.Any(p => p == 0))
-                        return new Point(i, j);
 
                     bool isInHex = true;
 
