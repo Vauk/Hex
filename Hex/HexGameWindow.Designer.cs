@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.canvas = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.components = new System.ComponentModel.Container();
+            this.tmrAppTimer = new System.Windows.Forms.Timer(this.components);
             this.mapEditPanel = new System.Windows.Forms.Panel();
             this.lblMouseCoor = new System.Windows.Forms.Label();
             this.btnRoad = new System.Windows.Forms.Button();
@@ -40,29 +40,12 @@
             this.btnSwamp = new System.Windows.Forms.Button();
             this.btnPlains = new System.Windows.Forms.Button();
             this.btnDesert = new System.Windows.Forms.Button();
-            this.canvas.SuspendLayout();
             this.mapEditPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // canvas
+            // tmrAppTimer
             // 
-            this.canvas.AllowDrop = true;
-            this.canvas.Controls.Add(this.panel1);
-            this.canvas.Controls.Add(this.mapEditPanel);
-            this.canvas.Location = new System.Drawing.Point(1, 1);
-            this.canvas.Name = "canvas";
-            this.canvas.Size = new System.Drawing.Size(1104, 687);
-            this.canvas.TabIndex = 0;
-            this.canvas.Paint += new System.Windows.Forms.PaintEventHandler(this.canvas_Paint);
-            this.canvas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.canvas_MouseClick);
-            this.canvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.canvas_MouseMove);
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(676, 172);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 100);
-            this.panel1.TabIndex = 1;
+            this.tmrAppTimer.Tick += new System.EventHandler(this.tmrAppTimer_Tick);
             // 
             // mapEditPanel
             // 
@@ -76,7 +59,7 @@
             this.mapEditPanel.Controls.Add(this.btnSwamp);
             this.mapEditPanel.Controls.Add(this.btnPlains);
             this.mapEditPanel.Controls.Add(this.btnDesert);
-            this.mapEditPanel.Location = new System.Drawing.Point(338, 97);
+            this.mapEditPanel.Location = new System.Drawing.Point(98, 123);
             this.mapEditPanel.Name = "mapEditPanel";
             this.mapEditPanel.Size = new System.Drawing.Size(75, 292);
             this.mapEditPanel.TabIndex = 0;
@@ -175,11 +158,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1108, 691);
-            this.Controls.Add(this.canvas);
+            this.Controls.Add(this.mapEditPanel);
             this.Name = "HexGameWindow";
             this.Text = "Hex Game";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HexGameWindow_FormClosing);
-            this.canvas.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.HexGameWindow_Load);
+            this.Click += new System.EventHandler(this.HexGameWindow_Click);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.HexGameWindow_MouseClick);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.HexGameWindow_MouseMove);
             this.mapEditPanel.ResumeLayout(false);
             this.mapEditPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -187,18 +173,16 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel canvas;
+        private System.Windows.Forms.Timer tmrAppTimer;
         private System.Windows.Forms.Panel mapEditPanel;
-        private System.Windows.Forms.Button btnPlains;
-        private System.Windows.Forms.Button btnDesert;
+        private System.Windows.Forms.Label lblMouseCoor;
+        private System.Windows.Forms.Button btnRoad;
+        private System.Windows.Forms.Button btnLava;
+        private System.Windows.Forms.Button btnVolcano;
         private System.Windows.Forms.Button btnMountain;
         private System.Windows.Forms.Button btnForest;
         private System.Windows.Forms.Button btnSwamp;
-        private System.Windows.Forms.Button btnLava;
-        private System.Windows.Forms.Button btnVolcano;
-        private System.Windows.Forms.Button btnRoad;
-        private System.Windows.Forms.Label lblMouseCoor;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnPlains;
+        private System.Windows.Forms.Button btnDesert;
     }
 }

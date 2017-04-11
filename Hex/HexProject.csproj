@@ -65,7 +65,6 @@
     <Compile Include="HexGameWindow.Designer.cs">
       <DependentUpon>HexGameWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="GEngine.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Units\HeavyInfantry.cs" />
   </ItemGroup>

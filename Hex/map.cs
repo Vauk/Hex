@@ -187,68 +187,6 @@ namespace Hex
             }
         }
 
-        /*public static Point getBoardLocation(Point p)
-        {
-            Point hexPoint = new Point(-1, -1);
-
-            int mx = p.X - hexBorder;                           // Remove borders
-            int my = p.Y - hexBorder;                           // Remove borders
-
-            int x = (int)(mx / (side + t));                     // This x is not 100% it is missing a portion of the hex (right hand side) and include left hand portions outside hex
-            int y = (int)((my - (x % 2) * radius) / height);    // even columns = y point / height, odd columns are offset by radius
-
-            //if (my - (x % 2) * radius < 0)                      // prevent clicking in the open halfhexes at the top of the screen
-            //    return hexPoint;
-
-            int dx = mx - x * (side + t);                       // Relative pixels from Hex x Boundary of the Hex clicked on
-            int dy = my - y * height;      // Relative pixels from Hex y Boundary of the Hex clicked on
-
-
-            if (x % 2 == 0)
-            {
-                if (dy > radius)
-                {   //bottom half of hexes
-                    if (dx * radius / t < dy - radius)
-                    {
-                        x--;
-                    }
-                }
-                if (dy < radius)
-                {   //top half of hexes
-                    if ((t - dx) * radius / t > dy)
-                    {
-                        x--;
-                        y--;
-                    }
-                }
-            }
-            else
-            {  // odd columns
-                if (dy > height)
-                {   //bottom half of hexes
-                    if (dx * radius / t < dy - height)
-                    {
-                        x--;
-                        y++;
-                    }
-                }
-                if (dy < height)
-                {   //top half of hexes
-                    //System.out.println("" + (t- dx)*r/t +  " " + (dy - r));
-                    if ((t - dx) * radius / t > dy - radius)
-                    {
-                        x--;
-                    }
-                }
-            }
-
-            hexPoint.X = x;
-            hexPoint.Y = y;
-
-            return hexPoint;
-        }
-        */
-
         public static Point getBoardLocation(Point point)
         {
             for (int i = 0; i < boardSize; i++)
