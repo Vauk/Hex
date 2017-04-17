@@ -40,6 +40,7 @@
             this.btnSwamp = new System.Windows.Forms.Button();
             this.btnPlains = new System.Windows.Forms.Button();
             this.btnDesert = new System.Windows.Forms.Button();
+            this.cmbUnits = new System.Windows.Forms.ComboBox();
             this.mapEditPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +52,7 @@
             // mapEditPanel
             // 
             this.mapEditPanel.BackColor = System.Drawing.Color.Transparent;
+            this.mapEditPanel.Controls.Add(this.cmbUnits);
             this.mapEditPanel.Controls.Add(this.lblMouseCoor);
             this.mapEditPanel.Controls.Add(this.btnRoad);
             this.mapEditPanel.Controls.Add(this.btnLava);
@@ -76,7 +78,7 @@
             // 
             // btnRoad
             // 
-            this.btnRoad.Location = new System.Drawing.Point(0, 225);
+            this.btnRoad.Location = new System.Drawing.Point(0, 216);
             this.btnRoad.Name = "btnRoad";
             this.btnRoad.Size = new System.Drawing.Size(75, 23);
             this.btnRoad.TabIndex = 7;
@@ -154,6 +156,16 @@
             this.btnDesert.UseVisualStyleBackColor = true;
             this.btnDesert.Click += new System.EventHandler(this.btnDesert_Click);
             // 
+            // cmbUnits
+            // 
+            this.cmbUnits.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cmbUnits.FormattingEnabled = true;
+            this.cmbUnits.Location = new System.Drawing.Point(0, 245);
+            this.cmbUnits.Name = "cmbUnits";
+            this.cmbUnits.Size = new System.Drawing.Size(75, 21);
+            this.cmbUnits.TabIndex = 8;
+            this.cmbUnits.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // HexGameWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,5 +196,6 @@
         private System.Windows.Forms.Button btnSwamp;
         private System.Windows.Forms.Button btnPlains;
         private System.Windows.Forms.Button btnDesert;
+        private System.Windows.Forms.ComboBox cmbUnits;
     }
 }

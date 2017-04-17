@@ -33,7 +33,6 @@ namespace Hex
             //stopGame();
         }
 
-
         private void btnDesert_Click(object sender, EventArgs e)
         {
             Cursor c = new Cursor("Images\\MapEditorDragImages\\Desert.cur");
@@ -97,6 +96,15 @@ namespace Hex
             this.DoubleBuffered = true;
 
             this.Paint += HexGameWindow_Paint;
+            
+            var theList = System.Reflection.Assembly.GetExecutingAssembly().GetTypes()
+                              .Where(t => t.Namespace == "Hex.Units.HeavyInfantry")
+                              .ToList();
+
+            foreach (var unit in theList)
+            {
+                cmbUnits.Items.Add(unit.Name);
+            }
         }
 
         private void HexGameWindow_Paint(object sender, PaintEventArgs e)
@@ -131,6 +139,11 @@ namespace Hex
         {
             Point relativePoint = this.PointToClient(Cursor.Position);
             lblMouseCoor.Text = relativePoint.X + "," + relativePoint.Y;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
